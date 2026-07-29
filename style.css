@@ -1,0 +1,1244 @@
+/* ==========================================
+   GLOBAL STYLES
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Quicksand',sans-serif;
+}
+
+html{
+    font-size:16px;
+}
+
+body{
+
+    min-height:100vh;
+    width:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+        135deg,
+        #fff7f7,
+        #ffe8ef,
+        #fff4f7
+    );
+
+    background-size:cover;
+
+}
+
+
+/* ==========================================
+   LOADING + WELCOME
+========================================== */
+
+#loadingScreen,
+#welcomeScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:5vw;
+
+    transition:1s;
+
+}
+
+#welcomeScreen{
+
+    display:none;
+    text-align:center;
+
+}
+
+
+/* ==========================================
+   TYPOGRAPHY
+========================================== */
+
+h1{
+
+    font-family:'Fredoka',sans-serif;
+
+    font-size:clamp(2rem,5vw,4.5rem);
+
+    font-weight:600;
+
+    color:#444;
+
+    line-height:1.3;
+
+    margin-bottom:1rem;
+
+}
+
+h2{
+
+    font-size:clamp(1.3rem,3vw,2.2rem);
+
+    color:#555;
+
+}
+
+p{
+
+    font-size:clamp(1rem,2.3vw,1.5rem);
+
+    color:#666;
+
+    line-height:1.7;
+
+    margin-top:1.3rem;
+
+    max-width:min(90vw,850px);
+
+    text-align:center;
+
+}
+
+
+/* ==========================================
+   LOADING BAR
+========================================== */
+
+.progress{
+
+    width:min(85vw,320px);
+
+    height:clamp(18px,2vw,24px);
+
+    background:#fff;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    margin-top:1.8rem;
+
+    box-shadow:0 0 10px rgba(0,0,0,.15);
+
+}
+
+#bar{
+
+    width:0%;
+
+    height:100%;
+
+    background:#ff6f91;
+
+}
+
+
+/* ==========================================
+   FADE ANIMATION
+========================================== */
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+    
+    /* ==========================================
+   VERIFY SCREEN
+========================================== */
+
+#verifyScreen{
+
+    display:none;
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    text-align:center;
+
+    padding:5vw;
+
+    animation:fade .8s;
+
+}
+
+
+/* ==========================================
+   QUESTION SCREEN
+========================================== */
+
+#questionScreen{
+
+    display:none;
+
+    width:100%;
+    text-align:center;
+
+}
+
+
+/* ==========================================
+   VERIFY TEXT
+========================================== */
+
+#verifyText{
+
+    font-size:clamp(1.2rem,2.5vw,2rem);
+
+    font-weight:bold;
+
+    color:#555;
+
+    margin-top:1.8rem;
+
+    line-height:1.6;
+
+}
+
+
+/* ==========================================
+   CARD
+========================================== */
+
+.card{
+
+    background:#fff;
+
+    width:min(92vw,460px);
+
+    padding:clamp(25px,5vw,60px);
+
+    border-radius:30px;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.12);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+button{
+
+    width:min(75vw,240px);
+
+    padding:clamp(14px,2vw,20px);
+    margin:12px;
+
+    font-size:clamp(1rem,2vw,1.5rem);
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+
+}
+
+
+button:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.15);
+
+}
+
+
+button:active{
+
+    transform:scale(.96);
+
+}
+
+
+/* ==========================================
+   NO BUTTON
+========================================== */
+
+#noBtn{
+
+    transition:
+        left .25s ease,
+        top .25s ease;
+
+}
+
+
+/* ==========================================
+   START SCREEN
+========================================== */
+
+#startScreen{
+
+    transition:opacity .8s;
+
+}
+
+
+/* ==========================================
+   LEVEL COMPLETE
+========================================== */
+
+.levelComplete{
+
+    animation:levelCompletePop .6s ease-out;
+
+}
+
+
+@keyframes levelCompletePop{
+
+    0%{
+
+        opacity:0;
+
+        transform:scale(.7);
+
+    }
+
+    60%{
+
+        opacity:1;
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================================
+   SPARKLES
+========================================== */
+
+.sparkle{
+
+    position:fixed;
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:0 0 15px #fff;
+
+    pointer-events:none;
+
+    z-index:4;
+
+    animation:sparkleMove 5s linear forwards;
+
+}
+
+@keyframes sparkleMove{
+
+    from{
+
+        transform:translateY(100vh) scale(.2);
+
+        opacity:0;
+
+    }
+
+    20%{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:translateY(-120vh) scale(1);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* ==========================================
+   CAPYBARA GAME
+========================================== */
+
+.holes{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            clamp(110px,18vw,160px)
+        );
+
+    gap:
+        clamp(18px,5vw,45px);
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-top:2rem;
+
+    width:100%;
+
+}
+
+
+/* ==========================================
+   HOLES
+========================================== */
+
+.hole{
+
+    width:
+        clamp(110px,18vw,160px);
+
+    height:
+        clamp(65px,10vw,95px);
+
+    background:#5b3b1e;
+
+    border-radius:50%;
+
+    position:relative;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    box-shadow:
+        inset 0 8px 12px rgba(0,0,0,.4);
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+
+}
+
+.hole:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+
+        inset 0 8px 12px rgba(0,0,0,.4),
+
+        0 10px 25px rgba(0,0,0,.18);
+
+}
+
+
+/* ==========================================
+   CAPYBARA
+========================================== */
+
+.capybara{
+
+    position:absolute;
+
+    bottom:-5px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:
+        clamp(42px,7vw,65px);
+
+    transition:.3s;
+
+    user-select:none;
+
+}
+
+
+/* ==========================================
+   GAME CONTAINER
+========================================== */
+
+#gameContainer{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+
+/* ==========================================
+   GAME TEXT
+========================================== */
+
+#gameTitle{
+
+    font-size:
+        clamp(1.8rem,4vw,3rem);
+
+    margin-bottom:1rem;
+
+}
+
+#gameSubtitle{
+
+    font-size:
+        clamp(1rem,2vw,1.3rem);
+
+    color:#666;
+
+    margin-top:.5rem;
+
+}
+
+
+/* ==========================================
+   LEVEL COMPLETE
+========================================== */
+
+#levelComplete{
+
+    text-align:center;
+
+    animation:levelCompletePop .6s ease-out;
+
+}
+
+#levelComplete h1{
+
+    font-size:
+        clamp(2rem,5vw,4rem);
+
+}
+
+#levelComplete p{
+
+    font-size:
+        clamp(1.1rem,2.2vw,1.6rem);
+
+}
+
+
+/* ==========================================
+   SMALL PHONES
+========================================== */
+
+@media(max-width:480px){
+
+    .holes{
+
+        gap:20px;
+
+    }
+
+}
+
+/* ==========================================
+   MEMORY WALL
+========================================== */
+
+#memoryWall{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    background:#000;
+
+    display:none;
+
+    overflow:hidden;
+
+    z-index:9999;
+
+}
+
+#memoryContainer{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+}
+
+
+/* ==========================================
+   MEMORY PHOTOS
+========================================== */
+
+.memoryPhoto{
+
+    object-fit:cover;
+
+    background:#fff;
+
+    padding:8px;
+
+    border-radius:8px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.5);
+
+    opacity:0;
+
+    animation:memoryLife 3.4s linear forwards;
+
+    animation-play-state:running;
+
+}
+
+
+@keyframes memoryFade{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            scale(.8)
+            rotate(var(--rotation));
+
+    }
+
+    15%{
+
+        opacity:1;
+
+    }
+
+    85%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            scale(1)
+            rotate(var(--rotation));
+
+    }
+
+}
+
+
+/* ==========================================
+   BIRTHDAY SCREEN
+========================================== */
+
+#birthdayScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:5vw;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff9a9e,
+            #fad0c4
+        );
+
+    overflow:hidden;
+
+    z-index:9000;
+
+}
+
+
+/* ==========================================
+   BIRTHDAY CONTENT
+========================================== */
+
+.birthdayContent{
+
+    width:min(95vw,900px);
+
+    text-align:center;
+
+    color:#fff;
+
+    padding:clamp(20px,4vw,40px);
+
+}
+
+
+/* ==========================================
+   EMOJI
+========================================== */
+
+.birthdayEmoji{
+
+    font-size:
+        clamp(60px,10vw,120px);
+
+    margin-bottom:20px;
+
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.birthdayTitle{
+
+    color:#fff;
+
+    font-family:'Fredoka',sans-serif;
+
+    font-size:
+        clamp(2.2rem,6vw,5rem);
+
+    line-height:1.2;
+
+}
+
+
+/* ==========================================
+   NAME
+========================================== */
+
+.birthdayName{
+
+    color:#fff;
+
+    margin:20px 0;
+
+    font-size:
+        clamp(1.8rem,5vw,3.8rem);
+
+    font-weight:700;
+
+}
+
+
+/* ==========================================
+   MESSAGE
+========================================== */
+
+.birthdayText{
+
+    color:#fff;
+
+    font-size:
+        clamp(1rem,2vw,1.6rem);
+
+    line-height:1.8;
+
+    width:min(95vw,700px);
+
+    margin:auto;
+
+}
+
+
+/* ==========================================
+   BALLOONS
+========================================== */
+
+.balloon{
+
+    position:absolute;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    width:
+        clamp(45px,7vw,90px);
+
+    animation:
+        floatBalloon linear forwards;
+
+}
+
+
+@keyframes floatBalloon{
+
+    from{
+
+        transform:
+            translateY(120vh);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+            translateY(-130vh);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* ==========================================
+   BIRTHDAY SPARKLES
+========================================== */
+
+.birthdaySparkle{
+
+    position:absolute;
+
+    width:
+        clamp(5px,1vw,10px);
+
+    height:
+        clamp(5px,1vw,10px);
+
+    background:#fff;
+
+    border-radius:50%;
+
+    box-shadow:0 0 12px #fff;
+
+    animation:
+        sparkleMove 4s linear forwards;
+
+}
+
+/* ==========================================
+   FADE LAYER
+========================================== */
+
+#fadeLayer{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    background:#000;
+
+    opacity:0;
+
+    transition:opacity 1s ease;
+
+    z-index:9999;
+
+}
+
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+
+/* ---------- Mobile Phones ---------- */
+
+@media (max-width:480px){
+
+    body{
+        padding:15px;
+    }
+
+    .card{
+        width:95%;
+        padding:25px;
+        border-radius:22px;
+    }
+
+    h1{
+        line-height:1.25;
+    }
+
+    p{
+        width:95%;
+    }
+
+    button{
+        width:90%;
+        max-width:260px;
+    }
+
+    .holes{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:20px;
+
+    }
+
+    .birthdayContent{
+        padding:20px;
+    }
+
+    .birthdayText{
+        width:95%;
+    }
+
+}
+
+
+/* ---------- Tablets ---------- */
+
+@media (min-width:481px) and (max-width:768px){
+
+    .card{
+        width:90%;
+        max-width:500px;
+    }
+
+    .holes{
+        gap:30px;
+    }
+
+}
+
+
+/* ---------- Small Laptops ---------- */
+
+@media (min-width:769px) and (max-width:1200px){
+
+    .card{
+        max-width:540px;
+    }
+
+}
+
+
+/* ---------- Desktop ---------- */
+
+@media (min-width:1201px){
+
+    body{
+        padding:0px;
+    }
+
+    .card{
+
+        max-width:600px;
+
+    }
+
+    .birthdayContent{
+
+        max-width:900px;
+
+    }
+
+}
+
+
+/* ---------- Large Desktop / TV ---------- */
+
+@media (min-width:1800px){
+
+    html{
+
+        font-size:20px;
+
+    }
+
+    .card{
+
+        max-width:720px;
+
+    }
+
+    .birthdayContent{
+
+        max-width:1200px;
+
+    }
+
+    .memoryPhoto{
+
+        border-radius:12px;
+
+    }
+
+}
+
+
+/* ==========================================
+   SMOOTH IMAGE SCALING
+========================================== */
+
+img{
+
+    max-width:100%;
+
+    height:auto;
+
+    display:block;
+
+}
+
+
+/* ==========================================
+   PREVENT OVERFLOW
+========================================== */
+
+*{
+
+    word-wrap:break-word;
+
+}
+
+body,
+#birthdayScreen,
+#memoryWall{
+
+    overflow:hidden;
+
+}
+
+
+/* ==========================================
+   SMOOTH TRANSITIONS
+========================================== */
+
+button,
+.card,
+.memoryPhoto,
+.balloon{
+
+    transition:all .3s ease;
+
+}
+
+
+/* ==========================================
+   BETTER TEXT SELECTION
+========================================== */
+
+body{
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+
+@media (min-width:1200px){
+
+    body{
+        zoom:1.5;
+    }
+
+}
+
+@media (min-width:1600px){
+
+    body{
+        zoom:1.8;
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+    .container{
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px;
+    }
+
+    h1{
+        font-size: 3rem;
+    }
+
+    h2{
+        font-size: 2rem;
+    }
+
+    p{
+        font-size: 1.4rem;
+    }
+
+    button{
+        font-size: 1.3rem;
+        padding: 16px 32px;
+    }
+
+}
+
+#memoryControls{
+
+    position:fixed;
+
+    bottom:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:99999;
+
+    display:block;
+
+}
+
+#pauseBtn{
+
+    background:rgba(0,0,0,0.75);
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:40px;
+    
+    min-width: 270px;
+    white-space: nowrap;
+
+    padding:12px 22px;
+
+    font-size:16px;
+
+    font-family:'Fredoka',sans-serif;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+#pauseBtn:hover{
+
+    background:#111;
+
+}
+
+@keyframes memoryLife{
+
+    0%{
+
+        opacity:0;
+
+        transform:scale(.85);
+
+    }
+
+    15%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+    75%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:scale(.9);
+
+    }
+
+}
+
+/* ==========================================
+   END OF CSS
+========================================== */
+
+   
+    
